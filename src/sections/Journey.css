@@ -1,0 +1,97 @@
+.journey-section {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 70px 0;
+  }
+  
+  .journey-heading {
+    max-width: 650px;
+    margin-bottom: 40px;
+  }
+  
+  .journey-heading h2 {
+    margin-bottom: 16px;
+  
+    font-family: var(--font-heading);
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 500;
+  }
+  
+  .journey-heading > p:last-child {
+    color: var(--text-soft);
+    line-height: 1.7;
+  }
+  
+  .timeline {
+    position: relative;
+    max-width: 850px;
+    margin-left: 10px;
+  }
+  
+  .timeline::before {
+    content: "";
+    position: absolute;
+  
+    top: 10px;
+    bottom: 10px;
+    left: 7px;
+  
+    width: 1px;
+    background: var(--border);
+  }
+  
+  .timeline-item {
+    position: relative;
+    padding: 0 0 38px 55px;
+  }
+  
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+  
+  .timeline-marker {
+    position: absolute;
+  
+    top: 7px;
+    left: 0;
+  
+    width: 15px;
+    height: 15px;
+  
+    background: var(--background);
+    border: 3px solid var(--accent);
+    border-radius: 50%;
+  }
+  
+  .timeline-period {
+    display: inline-block;
+    margin-bottom: 8px;
+  
+    color: var(--accent);
+  
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .timeline-content h3 {
+    margin-bottom: 5px;
+  
+    font-family: var(--font-heading);
+    font-size: 27px;
+    font-weight: 500;
+  }
+  
+  .timeline-content h4 {
+    margin-bottom: 12px;
+  
+    color: var(--text-soft);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .timeline-content p {
+    max-width: 650px;
+  
+    color: var(--text-soft);
+    line-height: 1.7;
+  }

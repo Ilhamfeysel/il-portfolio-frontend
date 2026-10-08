@@ -1,18 +1,14 @@
 export const skills = [
-    {
-      category: "Backend",
-      technologies: ["Java", "Spring Boot", "Spring Security", "REST APIs"],
-    },
-    {
-      category: "Frontend",
-      technologies: ["React", "TypeScript", "JavaScript", "HTML", "CSS"],
-    },
-    {
-      category: "Database",
-      technologies: ["MongoDB", "PostgreSQL", "MySQL"],
-    },
-    {
-      category: "Tools",
-      technologies: ["Git", "GitHub", "Docker", "Postman", "Maven", "CI/CD"],
-    },
+    { name: "Java", icon: "FaJava" },
+    { name: "Spring Boot", icon: "SiSpringboot" },
+    { name: "React", icon: "FaReact" },
+    { name: "TypeScript", icon: "SiTypescript" },
+    { name: "JavaScript", icon: "SiJavascript" },
+    { name: "MongoDB", icon: "SiMongodb" },
+    { name: "PostgreSQL", icon: "SiPostgresql" },
+    { name: "MySQL", icon: "SiMysql" },
+    { name: "Docker", icon: "FaDocker" },
+    { name: "Git", icon: "FaGitAlt" },
+    { name: "GitHub", icon: "FaGithub" },
+    { name: "Postman", icon: "SiPostman" },
   ];

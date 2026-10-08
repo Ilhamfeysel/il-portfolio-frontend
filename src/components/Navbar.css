@@ -1,0 +1,232 @@
+.navbar {
+    width: min(1180px, calc(100% - 48px));
+    height: 90px;
+    margin: 0 auto;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navbar-logo {
+    width: 48px;
+    height: 48px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    border: 1px solid var(--border);
+    border-radius: 50%;
+  
+    font-family: var(--font-heading);
+    font-size: 20px;
+    color: var(--accent);
+  }
+  
+  .navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+  }
+  
+  .navbar nav a {
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    transition: color 0.25s ease;
+  }
+  
+  .navbar nav a:hover {
+    color: var(--accent);
+  }
+  
+  .navbar nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+  
+    width: 0;
+    height: 2px;
+  
+    background: var(--accent);
+    transition: width 0.25s ease;
+  }
+  
+  .navbar nav a:hover::after {
+    width: 100%;
+  }
+  
+  .cv-button {
+    padding: 12px 20px;
+  
+    background: var(--accent);
+    color: white;
+    border-radius: 6px;
+  
+    font-size: 14px;
+    font-weight: 500;
+  
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease;
+  }
+  
+  .cv-button:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+  }
+
+  /* Animated personal logo */
+.navbar-logo {
+    position: relative;
+    width: 62px;
+    height: 62px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    flex-shrink: 0;
+    border-radius: 50%;
+    isolation: isolate;
+  }
+  
+  /* Rotating decorative rings */
+  .logo-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  
+  .logo-ring-outer {
+    inset: 2px;
+    border: 2px dashed rgba(167, 67, 91, 0.55);
+    animation: logoSpin 12s linear infinite;
+  }
+  
+  .logo-ring-inner {
+    inset: 9px;
+    border: 1px solid rgba(167, 67, 91, 0.45);
+    border-top: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    animation: logoSpinReverse 6s linear infinite;
+  }
+  
+  /* Floating initials */
+  .logo-text {
+    position: relative;
+    z-index: 1;
+  
+    font-family: var(--font-heading);
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: -2px;
+  
+    color: var(--accent);
+  
+    animation: logoFloat 3s ease-in-out infinite;
+  }
+  
+  .logo-dot {
+    color: var(--accent-dark);
+  }
+  
+  /* More movement when hovering */
+  .navbar-logo:hover .logo-ring-outer {
+    animation-duration: 3s;
+  }
+  
+  .navbar-logo:hover .logo-ring-inner {
+    animation-duration: 1.5s;
+  }
+  
+  .navbar-logo:hover .logo-text {
+    animation: logoPulse 0.8s ease-in-out infinite alternate;
+  }
+  
+  /* Animations */
+  @keyframes logoSpin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes logoSpinReverse {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+  
+  @keyframes logoFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+  
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+  
+  @keyframes logoPulse {
+    to {
+      transform: scale(1.15);
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .logo-ring,
+    .logo-text {
+      animation: none !important;
+    }
+  }
+
+  /* Glass-style navigation */
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  
+    padding: 7px;
+  
+    background: rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+  
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  
+    box-shadow: 0 6px 25px rgba(100, 50, 70, 0.04);
+  }
+  
+  .navbar .navbar-links a {
+    position: relative;
+  
+    padding: 11px 18px;
+  
+    border-radius: 30px;
+  
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+  
+    transition:
+      background 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
+  
+  .navbar .navbar-links a:hover {
+    background: rgba(167, 67, 91, 0.12);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  
+  /* Remove the old underline animation */
+  
+  .navbar .navbar-links a::after {
+    display: none;
+  }

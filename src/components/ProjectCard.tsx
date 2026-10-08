@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
+import ProjectVisual from "./ProjectVisual";
 
 type ProjectCardProps = {
+  id: number;
   title: string;
   description: string;
   technologies: string[];
@@ -8,6 +10,7 @@ type ProjectCardProps = {
 };
 
 function ProjectCard({
+    id,
   title,
   description,
   technologies,
@@ -27,8 +30,8 @@ function ProjectCard({
       whileHover={{ y: -6 }}
     >
       <div className="project-image">
-        <span>Project screenshot</span>
-      </div>
+  <ProjectVisual projectId={id} />
+</div>
 
       <div className="project-content">
         <h3>{title}</h3>

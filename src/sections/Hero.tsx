@@ -1,16 +1,21 @@
 
 import { motion } from "motion/react";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import heroPhoto from "../assets/hero-photo.jpg";
+import "./Hero.css";
 
 function Hero() {
   return (
     <section className="hero" id="home">
-
+      {/* Left side */}
       <motion.div
         className="hero-content"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
+        {/* Introduction */}
         <motion.p
           className="hero-intro"
           initial={{ opacity: 0 }}
@@ -20,14 +25,18 @@ function Hero() {
           Hi, I'm
         </motion.p>
 
+        {/* Name */}
         <motion.h1
+          className="hero-name"
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
         >
-          Ilham Feysel
+          <span className="hero-first-name">Ilham</span>
+          <span className="hero-last-name">Feysel.</span>
         </motion.h1>
 
+        {/* Job title */}
         <motion.h2
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -36,6 +45,7 @@ function Hero() {
           Java Full-Stack Developer
         </motion.h2>
 
+        {/* Description */}
         <motion.p
           className="hero-description"
           initial={{ opacity: 0 }}
@@ -46,31 +56,58 @@ function Hero() {
           with a focus on clean, scalable and user-friendly solutions.
         </motion.p>
 
+        {/* Social media icons */}
         <motion.div
           className="hero-socials"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75 }}
+          transition={{ delay: 0.75, duration: 0.5 }}
         >
-          <a href="#" aria-label="GitHub">GitHub</a>
-          <a href="#" aria-label="LinkedIn">LinkedIn</a>
-          <a href="mailto:your-email@example.com" aria-label="Email">
-            Email
+          <a
+            href="https://github.com/Ilhamfeysel"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile"
+            title="GitHub"
+          >
+            <FaGithub size={21} />
+          </a>
+
+          <a
+            href="#contact"
+            aria-label="Contact section"
+            title="LinkedIn link coming soon"
+          >
+            <FaLinkedinIn size={21} />
+          </a>
+
+          <a
+            href="#contact"
+            aria-label="Go to contact section"
+            title="Contact"
+          >
+            <HiOutlineMail size={23} />
           </a>
         </motion.div>
       </motion.div>
 
+      {/* Right side - Profile image */}
       <motion.div
         className="hero-image"
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+        transition={{
+          delay: 0.3,
+          duration: 0.8,
+          ease: "easeOut",
+        }}
       >
-        <div className="image-placeholder">
-          Photo coming later
-        </div>
+        <img
+          src={heroPhoto}
+          alt="Portrait of Ilham Feysel"
+          className="hero-photo"
+        />
       </motion.div>
-
     </section>
   );
 }

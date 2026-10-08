@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import ProjectCard from "../components/ProjectCard";
 import { projects } from "../data/projects";
+import "./Projects.css";
 
 function Projects() {
   return (
@@ -35,12 +36,13 @@ function Projects() {
       <div className="projects-grid">
         {projects.map((project, index) => (
           <ProjectCard
-            key={project.id}
-            title={project.title}
-            description={project.description}
-            technologies={project.technologies}
-            index={index}
-          />
+          key={project.id}
+          id={project.id}
+          title={project.title}
+          description={project.description}
+          technologies={project.technologies}
+          index={index}
+        />
         ))}
       </div>
     </section>

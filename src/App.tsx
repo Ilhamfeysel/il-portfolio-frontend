@@ -1,13 +1,15 @@
-import "./App.css";
 import Navbar from "./components/Navbar";
+import AnimatedBackground from "./components/AnimatedBackground";
 import Hero from "./sections/Hero";
 import Projects from "./sections/Projects";
 import Skills from "./sections/Skills";
 import Journey from "./sections/Journey";
+import AIAssistant from "./sections/AIAssistant";
 
 function App() {
   return (
     <>
+      <AnimatedBackground />
       <Navbar />
 
       <main>
@@ -15,6 +17,7 @@ function App() {
         <Projects />
         <Skills />
         <Journey />
+        <AIAssistant />
       </main>
     </>
   );

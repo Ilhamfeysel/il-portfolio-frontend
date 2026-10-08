@@ -1,5 +1,39 @@
 import { motion } from "motion/react";
-import { skills } from "../data/skills";
+import "./Skills.css";
+
+
+import {
+  FaJava,
+  FaReact,
+  FaDocker,
+  FaGitAlt,
+  FaGithub,
+} from "react-icons/fa";
+
+import {
+  SiSpringboot,
+  SiTypescript,
+  SiJavascript,
+  SiMongodb,
+  SiPostgresql,
+  SiMysql,
+  SiPostman,
+} from "react-icons/si";
+
+const skills = [
+  { name: "Java", icon: FaJava },
+  { name: "Spring Boot", icon: SiSpringboot },
+  { name: "React", icon: FaReact },
+  { name: "TypeScript", icon: SiTypescript },
+  { name: "JavaScript", icon: SiJavascript },
+  { name: "MongoDB", icon: SiMongodb },
+  { name: "PostgreSQL", icon: SiPostgresql },
+  { name: "MySQL", icon: SiMysql },
+  { name: "Docker", icon: FaDocker },
+  { name: "Git", icon: FaGitAlt },
+  { name: "GitHub", icon: FaGithub },
+  { name: "Postman", icon: SiPostman },
+];
 
 function Skills() {
   return (
@@ -12,36 +46,52 @@ function Skills() {
         transition={{ duration: 0.6 }}
       >
         <p className="section-label">TECH STACK</p>
+
         <h2>Skills & Technologies</h2>
 
         <p>
-          Technologies I use to build modern full-stack applications.
+          Technologies and tools I use to build modern full-stack
+          applications.
         </p>
       </motion.div>
 
-      <div className="skills-grid">
-        {skills.map((skill, index) => (
-          <motion.div
-            className="skill-card"
-            key={skill.category}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.5,
-              delay: index * 0.1,
-            }}
-          >
-            <h3>{skill.category}</h3>
+      <motion.div
+        className="skills-orbit"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <div className="orbit-circle orbit-circle-one" />
+        <div className="orbit-circle orbit-circle-two" />
 
-            <div className="skill-list">
-              {skill.technologies.map((technology) => (
-                <span key={technology}>{technology}</span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-      </div>
+        <div className="orbit-center">
+          <span>FULL</span>
+          <strong>STACK</strong>
+        </div>
+
+        <div className="orbit-track">
+          {skills.map((skill, index) => {
+            const Icon = skill.icon;
+
+            return (
+              <div
+                className="orbit-position"
+                key={skill.name}
+                style={{
+                  "--index": index,
+                  "--total": skills.length,
+                } as React.CSSProperties}
+              >
+                <div className="orbit-skill">
+                  <Icon />
+                  <span>{skill.name}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,0 +1,247 @@
+
+.visual {
+    height: 210px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .visual-jobs {
+    background: linear-gradient(135deg, #e9d4e5, #f7e5e7);
+  }
+  
+  .visual-health {
+    background: linear-gradient(135deg, #dcece7, #f0e9df);
+  }
+  
+  .visual-learning {
+    background: linear-gradient(135deg, #e1daf2, #f3dce7);
+  }
+  
+  .mini-window {
+    width: 100%;
+    max-width: 340px;
+    background: #fffdfc;
+    border: 1px solid rgba(70, 40, 50, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(70, 40, 50, 0.12);
+    overflow: hidden;
+    transform: rotate(-2deg);
+    transition: transform 0.4s ease;
+  }
+  
+  .project-card:hover .mini-window {
+    transform: rotate(0deg) scale(1.04);
+  }
+  
+  .mini-window-top {
+    height: 32px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #f1e9e7;
+    color: #8d777b;
+    font-size: 10px;
+  }
+  
+  .mini-dots {
+    color: #c98ca0;
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+  
+  .mini-kanban {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    padding: 12px;
+  }
+  
+  .mini-column {
+    min-width: 0;
+    padding: 7px;
+    background: #faf5f5;
+    border-radius: 6px;
+  }
+  
+  .mini-column > strong {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 9px;
+    color: #634653;
+  }
+  
+  .mini-task {
+    margin-bottom: 6px;
+    padding: 7px 5px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .mini-task span,
+  .mini-task small {
+    display: block;
+    overflow-wrap: anywhere;
+  }
+  
+  .mini-task span {
+    font-size: 8px;
+    font-weight: 600;
+  }
+  
+  .mini-task small {
+    margin-top: 4px;
+    color: #9c898d;
+    font-size: 7px;
+  }
+  
+  .mini-success {
+    background: #e8f5eb;
+  }
+  
+  .mini-health-content,
+  .mini-learning-content {
+    padding: 12px 16px;
+  }
+  
+  .mini-health-heading,
+  .mini-learning-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .mini-health-heading strong,
+  .mini-learning-heading strong {
+    display: block;
+    font-size: 12px;
+  }
+  
+  .mini-pill {
+    padding: 4px 7px;
+    background: #e7f2ed;
+    border-radius: 20px;
+    color: #487565;
+    font-size: 8px;
+    white-space: nowrap;
+  }
+  
+  .mini-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+    text-align: center;
+  }
+  
+  .mini-day-label {
+    color: #8c9993;
+    font-size: 8px;
+  }
+  
+  .mini-date {
+    padding: 3px;
+    border-radius: 4px;
+    color: #57655e;
+    font-size: 8px;
+  }
+  
+  .mini-booked {
+    background: #a7cabb;
+    color: #254c3c;
+  }
+  
+  .mini-appointment {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 9px;
+    padding: 8px;
+    background: #edf6f1;
+    border-radius: 6px;
+    font-size: 9px;
+  }
+  
+  .mini-appointment strong {
+    margin-left: auto;
+  }
+  
+  .mini-appointment-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #69a78b;
+  }
+  
+  .mini-learning-heading small {
+    display: block;
+    margin-bottom: 3px;
+    color: #a17b9e;
+    font-size: 8px;
+  }
+  
+  .mini-learning-heading .mini-pill {
+    background: #f4e3f0;
+    color: #a7435b;
+  }
+  
+  .mini-quiz {
+    padding: 10px;
+    background: #faf6fc;
+    border-radius: 8px;
+  }
+  
+  .mini-quiz > span {
+    display: block;
+    margin-bottom: 5px;
+    color: #a17b9e;
+    font-size: 8px;
+  }
+  
+  .mini-quiz > strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 10px;
+  }
+  
+  .mini-answer {
+    margin-top: 4px;
+    padding: 5px 7px;
+    border: 1px solid #eee5f1;
+    border-radius: 5px;
+    background: white;
+    font-size: 8px;
+  }
+  
+  .mini-selected {
+    border-color: #b988c2;
+    background: #f1e2f5;
+    color: #7b4285;
+  }
+  
+  .mini-progress {
+    height: 4px;
+    margin-top: 9px;
+    background: #eee5f1;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .mini-progress span {
+    display: block;
+    width: 35%;
+    height: 100%;
+    background: #b988c2;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .mini-window {
+      transition: none;
+    }
+  }
+  

@@ -3,10 +3,13 @@
 :root {
   --background: #fdf9f6;
   --surface: #fffdfb;
+
   --text: #191716;
   --text-soft: #6f6864;
+
   --accent: #a7435b;
   --accent-dark: #8d344b;
+
   --border: #eadfda;
 
   --font-heading: "Playfair Display", serif;
@@ -30,7 +33,10 @@ html {
 body {
   min-width: 320px;
   min-height: 100vh;
-  background: var(--background);
+
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body);
 }
 
 a {
@@ -41,4 +47,28 @@ a {
 button,
 a {
   font-family: inherit;
+}
+
+.section-label {
+  margin-bottom: 10px;
+
+  color: var(--accent);
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+html {
+  background: #fdf9f6;
+}
+
+body {
+  background: transparent;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
 }

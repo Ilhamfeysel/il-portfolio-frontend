@@ -1,0 +1,80 @@
+/* Background stays behind the entire website */
+.animated-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+  
+    overflow: hidden;
+    pointer-events: none;
+  
+    background: #fdf9f6;
+  }
+  
+  /* Soft moving ocean colors */
+  .wave {
+    position: absolute;
+  
+    width: 180%;
+    height: 65%;
+    left: -40%;
+  
+    border-radius: 45%;
+    filter: blur(70px);
+    opacity: 0.42;
+  
+    will-change: transform;
+  }
+  
+  .wave-one {
+    top: 5%;
+    background: #e8a9c3;
+    animation: oceanWaveOne 25s ease-in-out infinite alternate;
+  }
+  
+  .wave-two {
+    top: 35%;
+    background: #c6b3e8;
+    animation: oceanWaveTwo 30s ease-in-out infinite alternate;
+  }
+  
+  .wave-three {
+    top: 60%;
+    background: #f0c5aa;
+    animation: oceanWaveThree 35s ease-in-out infinite alternate;
+  }
+  
+  @keyframes oceanWaveOne {
+    from {
+      transform: translateX(-8%) rotate(-6deg);
+    }
+  
+    to {
+      transform: translateX(8%) rotate(6deg);
+    }
+  }
+  
+  @keyframes oceanWaveTwo {
+    from {
+      transform: translateX(8%) rotate(5deg);
+    }
+  
+    to {
+      transform: translateX(-8%) rotate(-5deg);
+    }
+  }
+  
+  @keyframes oceanWaveThree {
+    from {
+      transform: translateX(-6%) rotate(-4deg);
+    }
+  
+    to {
+      transform: translateX(6%) rotate(4deg);
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .wave {
+      animation: none;
+    }
+  }

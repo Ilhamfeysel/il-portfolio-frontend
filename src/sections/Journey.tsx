@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { journey } from "../data/journey";
+import "./Journey.css";
 
 function Journey() {
   return (

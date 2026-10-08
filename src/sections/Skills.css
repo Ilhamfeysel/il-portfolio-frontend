@@ -1,0 +1,171 @@
+.skills-section {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 65px 0;
+  }
+  
+  .skills-heading {
+    max-width: 650px;
+    margin-bottom: 30px;
+  }
+  
+  .skills-heading h2 {
+    margin-bottom: 16px;
+  
+    font-family: var(--font-heading);
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 500;
+  }
+  
+  .skills-heading > p:last-child {
+    color: var(--text-soft);
+    line-height: 1.7;
+  }
+  
+  .skills-orbit {
+    --orbit-radius: 125px;
+  
+    position: relative;
+  
+    width: 330px;
+    max-width: 100%;
+    aspect-ratio: 1;
+  
+    margin: 15px auto 0;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .orbit-circle {
+    position: absolute;
+  
+    border: 1px solid var(--border);
+    border-radius: 50%;
+  
+    pointer-events: none;
+  }
+  
+  .orbit-circle-one {
+    width: 78%;
+    height: 78%;
+  }
+  
+  .orbit-circle-two {
+    width: 48%;
+    height: 48%;
+  }
+  
+  .orbit-track {
+    position: absolute;
+  
+    width: 100%;
+    height: 100%;
+  
+    animation: orbitRotate 55s linear infinite;
+  }
+  
+  .orbit-position {
+    --angle: calc(360deg / var(--total) * var(--index));
+  
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  
+    width: 1px;
+    height: 1px;
+  
+    transform:
+      rotate(var(--angle))
+      translateX(var(--orbit-radius));
+  }
+  
+  .orbit-skill {
+    width: 50px;
+    height: 50px;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+  
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+  
+    transform:
+      translate(-50%, -50%)
+      rotate(calc(-1 * var(--angle)));
+  
+    animation: keepSkillStraight 55s linear infinite;
+  
+    box-shadow: 0 4px 12px rgba(70, 40, 45, 0.05);
+  }
+  
+  .orbit-skill svg {
+    width: 17px;
+    height: 17px;
+  }
+  
+  .orbit-skill span {
+    font-size: 7px;
+  }
+  
+  .orbit-center {
+    position: absolute;
+    z-index: 3;
+  
+    width: 82px;
+    height: 82px;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+  
+    color: var(--accent);
+  }
+  
+  .orbit-center span {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+  
+  .orbit-center strong {
+    margin-top: 2px;
+  
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  @keyframes orbitRotate {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes keepSkillStraight {
+    from {
+      rotate: 0deg;
+    }
+  
+    to {
+      rotate: -360deg;
+    }
+  }
+  
+  .skills-orbit:hover .orbit-track,
+  .skills-orbit:hover .orbit-skill {
+    animation-play-state: paused;
+  }
