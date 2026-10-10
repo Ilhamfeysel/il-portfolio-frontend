@@ -63,6 +63,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.5 }}
         >
+          {/* GitHub */}
           <a
             href="https://github.com/Ilhamfeysel"
             target="_blank"
@@ -73,18 +74,22 @@ function Hero() {
             <FaGithub size={21} />
           </a>
 
+          {/* LinkedIn */}
           <a
-            href="#contact"
-            aria-label="Contact section"
-            title="LinkedIn link coming soon"
+            href="https://www.linkedin.com/in/ilhamfeysel/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+            title="LinkedIn"
           >
             <FaLinkedinIn size={21} />
           </a>
 
+          {/* Email */}
           <a
-            href="#contact"
-            aria-label="Go to contact section"
-            title="Contact"
+            href="mailto:ilhamfeysel@gmail.com"
+            aria-label="Send me an email"
+            title="Email"
           >
             <HiOutlineMail size={23} />
           </a>
