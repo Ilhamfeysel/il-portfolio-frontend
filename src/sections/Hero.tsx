@@ -33,7 +33,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <span className="hero-first-name">Ilham</span>
-          <span className="hero-last-name">Feysel.</span>
+          <span className="hero-last-name">Feysel</span>
         </motion.h1>
 
         {/* Job title */}

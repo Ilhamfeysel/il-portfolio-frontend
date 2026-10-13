@@ -230,3 +230,123 @@
   .navbar .navbar-links a::after {
     display: none;
   }
+
+
+/* ====================================
+   RESPONSIVE NAVBAR
+==================================== */
+
+/* Hidden on desktop */
+.navbar-menu-button {
+  display: none;
+}
+
+.navbar-mobile-cv {
+  display: none;
+}
+
+/* Tablet and mobile */
+@media (max-width: 900px) {
+  .navbar {
+    position: relative;
+    width: calc(100% - 36px);
+    height: 78px;
+    z-index: 100;
+  }
+
+  .navbar-logo {
+    width: 54px;
+    height: 54px;
+  }
+
+  .navbar-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    margin-left: auto;
+    padding: 0;
+    border: 1px solid rgba(167, 67, 91, 0.2);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.65);
+    color: var(--accent);
+    cursor: pointer;
+  }
+
+  .navbar-menu-button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .navbar-desktop-cv {
+    display: none;
+  }
+
+  .navbar .navbar-links {
+    display: none;
+    position: absolute;
+
+    top: calc(100% - 5px);
+    left: 0;
+    right: 0;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+
+    padding: 14px;
+    border-radius: 18px;
+
+    background: rgba(255, 247, 249, 0.97);
+    border: 1px solid rgba(167, 67, 91, 0.12);
+
+    box-shadow: 0 15px 40px rgba(100, 50, 70, 0.15);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .navbar .navbar-links.navbar-links-open {
+    display: flex;
+  }
+
+  .navbar .navbar-links a {
+    display: block;
+    padding: 14px 16px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  .navbar .navbar-links .navbar-mobile-cv {
+    display: block;
+    margin-top: 8px;
+    text-align: center;
+    background: var(--accent);
+    color: white;
+    font-weight: 600;
+  }
+
+  .navbar .navbar-links .navbar-mobile-cv:hover {
+    background: var(--accent-dark);
+    color: white;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    width: calc(100% - 32px);
+    height: 72px;
+  }
+
+  .navbar-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .logo-text {
+    font-size: 20px;
+  }
+}
