@@ -109,7 +109,7 @@ function AIAssistant() {
             <div className="ai-chat-header">
               <div>
                 <h3>Ask Ilham's AI</h3>
-                <p>Your portfolio assistant</p>
+                <p>portfolio assistant</p>
               </div>
 
               <button
