@@ -1,7 +1,11 @@
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import type { FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { sendChatMessage } from "../services/chatApi";
 import "./AIAssistant.css";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const suggestedQuestions = [
   "What are Ilham's technical skills?",
@@ -10,23 +14,79 @@ const suggestedQuestions = [
   "How can I contact her?",
 ];
 
+interface ChatMessage {
+  role: "user" | "assistant";
+  content: string;
+}
+
 function AIAssistant() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [conversationId, setConversationId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSendMessage = (
-    e: React.SubmitEvent<HTMLFormElement>
-  ) => {
-    e.preventDefault();
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-    const trimmedMessage = message.trim();
+  useEffect(() => {
+    if (isChatOpen) {
+      messagesEndRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [messages, isLoading, isChatOpen]);
 
-    if (!trimmedMessage) return;
+  const sendMessage = async (text: string) => {
+    const trimmedMessage = text.trim();
 
-    // Temporary: backend connection will be added later
-    console.log("Message sent:", trimmedMessage);
+    if (!trimmedMessage || isLoading) return;
+
+    if (trimmedMessage.length > 1000) {
+      setError("Messages cannot exceed 1000 characters.");
+      return;
+    }
+
+    setMessages((previous) => [
+      ...previous,
+      { role: "user", content: trimmedMessage },
+    ]);
 
     setMessage("");
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const response = await sendChatMessage({
+        message: trimmedMessage,
+        ...(conversationId ? { conversationId } : {}),
+      });
+
+      setConversationId(response.conversationId);
+
+      setMessages((previous) => [
+        ...previous,
+        { role: "assistant", content: response.reply },
+      ]);
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSendMessage = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    void sendMessage(message);
+  };
+
+  const handleSuggestedQuestion = (question: string) => {
+    void sendMessage(question);
   };
 
   return (
@@ -124,24 +184,87 @@ function AIAssistant() {
 
             {/* Chat Body */}
             <div className="ai-chat-body">
-              <p>
-                Hi! 👋 I'm Ilham's AI Assistant.
-                Ask me about her skills, projects
-                and developer experience.
-              </p>
+              {messages.length === 0 && (
+                <>
+                  <p>
+                    Hi! 👋 I'm Ilham's AI Assistant.
+                    Ask me about her skills, projects
+                    and developer experience.
+                  </p>
 
-              {/* Suggested Questions */}
-              <div className="ai-suggestions">
-                {suggestedQuestions.map((question) => (
-                  <button
-                    key={question}
-                    type="button"
-                    className="ai-suggestion"
-                    onClick={() => setMessage(question)}
+                  {/* Suggested Questions */}
+                  <div className="ai-suggestions">
+                    {suggestedQuestions.map((question) => (
+                      <button
+                        key={question}
+                        type="button"
+                        className="ai-suggestion"
+                        disabled={isLoading}
+                        onClick={() =>
+                          handleSuggestedQuestion(question)
+                        }
+                      >
+                        {question}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {/* Conversation Messages */}
+              <div
+                className="ai-messages"
+                role="log"
+                aria-live="polite"
+                aria-relevant="additions"
+              >
+                {messages.map((chatMessage, index) => (
+                  <div
+                    key={index}
+                    className={`ai-message ai-message-${chatMessage.role}`}
                   >
-                    {question}
-                  </button>
+                    <span className="ai-message-label">
+                      {chatMessage.role === "user"
+                        ? "You"
+                        : "Ilham's AI"}
+                    </span>
+                    <div className="ai-message-content">
+  {chatMessage.role === "assistant" ? (
+    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+      {chatMessage.content}
+    </ReactMarkdown>
+  ) : (
+    chatMessage.content
+  )}
+</div>
+
+                    
+                  </div>
                 ))}
+
+                {/* Loading Indicator */}
+                {isLoading && (
+                  <div
+                    className="ai-message ai-message-assistant"
+                    role="status"
+                  >
+                    <span className="ai-message-label">
+                      Ilham's AI
+                    </span>
+                    <p className="ai-message-content">
+                      Thinking...
+                    </p>
+                  </div>
+                )}
+
+                {/* Error Message */}
+                {error && (
+                  <div className="ai-chat-error" role="alert">
+                    {error}
+                  </div>
+                )}
+
+                <div ref={messagesEndRef} />
               </div>
             </div>
 
@@ -155,6 +278,8 @@ function AIAssistant() {
                 placeholder="Ask me anything about Ilham..."
                 aria-label="Your message"
                 value={message}
+                maxLength={1000}
+                disabled={isLoading}
                 onChange={(e) =>
                   setMessage(e.target.value)
                 }
@@ -162,7 +287,7 @@ function AIAssistant() {
 
               <button
                 type="submit"
-                disabled={!message.trim()}
+                disabled={!message.trim() || isLoading}
                 aria-label="Send message"
               >
                 ➤
@@ -176,3 +301,4 @@ function AIAssistant() {
 }
 
 export default AIAssistant;
+
