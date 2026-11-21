@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import "./Navbar.css";
@@ -43,16 +42,16 @@ function Navbar() {
         className={`navbar-links ${menuOpen ? "navbar-links-open" : ""}`}
         aria-label="Main navigation"
       >
+
+<a href="#research" onClick={closeMenu}>
+  Research
+</a>
         <a href="#projects" onClick={closeMenu}>
           Projects
         </a>
 
         <a href="#skills" onClick={closeMenu}>
           Skills
-        </a>
-
-        <a href="#journey" onClick={closeMenu}>
-          Journey
         </a>
 
         <a href="#contact" onClick={closeMenu}>
