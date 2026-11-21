@@ -1,4 +1,3 @@
-
 import { motion } from "motion/react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
