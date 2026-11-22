@@ -4,6 +4,8 @@ import Hero from "./sections/Hero";
 import Projects from "./sections/Projects";
 import Skills from "./sections/Skills";
 import AIAssistant from "./sections/AIAssistant";
+import Research from "./sections/Research";
+import BackToTop from "./components/BackToTop";
 
 function App() {
   return (
@@ -13,10 +15,13 @@ function App() {
 
       <main>
         <Hero />
+        <Research />
         <Projects />
         <Skills />
         <AIAssistant />
       </main>
+
+      <BackToTop />
     </>
   );
 }
