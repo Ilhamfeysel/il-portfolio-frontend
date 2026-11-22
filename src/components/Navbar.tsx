@@ -1,11 +1,21 @@
+
 import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import "./Navbar.css";
 
-function Navbar() {
+type NavbarProps = {
+  onOpenCVModal: () => void;
+};
+
+function Navbar({ onOpenCVModal }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = () => setMenuOpen(false);
+
+  const handleCVClick = () => {
+    closeMenu();
+    onOpenCVModal();
+  };
 
   return (
     <header className="navbar">
@@ -42,10 +52,10 @@ function Navbar() {
         className={`navbar-links ${menuOpen ? "navbar-links-open" : ""}`}
         aria-label="Main navigation"
       >
+        <a href="#research" onClick={closeMenu}>
+          Research
+        </a>
 
-<a href="#research" onClick={closeMenu}>
-  Research
-</a>
         <a href="#projects" onClick={closeMenu}>
           Projects
         </a>
@@ -58,28 +68,28 @@ function Navbar() {
           Contact
         </a>
 
-        {/* CV link inside mobile menu */}
-        <a
-          href="/Ilham-Feysel-CV.pdf"
+        {/* CV button inside mobile menu */}
+        <button
+          type="button"
           className="navbar-mobile-cv"
-          onClick={closeMenu}
-          download
+          onClick={handleCVClick}
         >
           Download CV
-        </a>
+        </button>
       </nav>
 
       {/* CV button on desktop */}
-      <a
-        href="/Ilham-Feysel-CV.pdf"
+      <button
+        type="button"
         className="cv-button navbar-desktop-cv"
-        download
+        onClick={handleCVClick}
       >
         Download CV
-      </a>
+      </button>
     </header>
   );
 }
 
 export default Navbar;
+
 

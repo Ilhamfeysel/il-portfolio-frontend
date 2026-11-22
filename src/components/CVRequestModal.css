@@ -1,0 +1,197 @@
+
+.cv-modal {
+    width: min(92%, 480px);
+    max-height: min(90vh, 800px);
+    max-height: min(90dvh, 800px);
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 24px 80px rgba(45, 20, 30, 0.2);
+    overflow-y: auto;
+  }
+  
+  .cv-modal::backdrop {
+    background: rgba(35, 20, 28, 0.58);
+    backdrop-filter: blur(5px);
+  }
+  
+  .cv-modal-content {
+    padding: 32px;
+  }
+  
+  .cv-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  
+  .cv-modal-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent);
+  }
+  
+  .cv-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(167, 67, 91, 0.08);
+    color: var(--accent);
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .cv-modal-close:hover {
+    background: rgba(167, 67, 91, 0.16);
+  }
+  
+  .cv-modal-close:focus-visible,
+  .cv-modal-submit:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  
+  .cv-modal h2 {
+    margin: 0 0 12px;
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 4vw, 30px);
+    line-height: 1.25;
+    color: var(--text);
+  }
+  
+  .cv-modal-description {
+    margin: 0 0 26px;
+    color: var(--text-soft);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  
+  .cv-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+  }
+  
+  .cv-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  
+  .cv-form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  
+  .cv-form-group label > span:not(.cv-optional) {
+    color: var(--accent);
+  }
+  
+  .cv-optional {
+    font-weight: 400;
+    color: var(--text-soft);
+  }
+  
+  .cv-form-group input,
+  .cv-form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .cv-form-group input::placeholder,
+  .cv-form-group textarea::placeholder {
+    color: var(--text-soft);
+    opacity: 0.75;
+  }
+  
+  .cv-form-group input:focus,
+  .cv-form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(167, 67, 91, 0.1);
+  }
+  
+  .cv-form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .cv-modal-submit {
+    width: 100%;
+    padding: 14px 18px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent);
+    color: white;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  
+  .cv-modal-submit:not(:disabled):hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+  }
+  
+  .cv-modal-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .cv-modal-privacy {
+    margin: 0;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--text-soft);
+  }
+  
+  @media (max-width: 600px) {
+    .cv-modal {
+      width: min(94%, 480px);
+      border-radius: 16px;
+    }
+  
+    .cv-modal-content {
+      padding: 24px 20px;
+    }
+  
+    .cv-modal-description {
+      margin-bottom: 20px;
+    }
+  
+    .cv-modal-form {
+      gap: 14px;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .cv-modal-close,
+    .cv-form-group input,
+    .cv-form-group textarea,
+    .cv-modal-submit {
+      transition: none;
+    }
+  }
+  
