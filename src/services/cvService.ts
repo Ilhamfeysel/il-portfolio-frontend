@@ -17,6 +17,7 @@ interface CVResponse {
 export async function downloadCV(
   formData: CVFormData
 ): Promise<void> {
+
   const response = await fetch(`${API_URL}/api/cv/request`, {
     method: "POST",
     headers: {
@@ -25,6 +26,30 @@ export async function downloadCV(
     body: JSON.stringify(formData),
   });
 
+  // Handle rate limit
+  if (response.status === 429) {
+    throw new Error(
+      "You've reached the CV download limit. " +
+      "Please wait a few minutes before trying again."
+    );
+  }
+
+  // Handle validation errors
+  if (response.status === 400) {
+    throw new Error(
+      "Please check your information and try again."
+    );
+  }
+
+  // Handle temporarily unavailable email service
+  if (response.status === 503) {
+    throw new Error(
+      "The CV download service is temporarily unavailable. " +
+      "Please try again later."
+    );
+  }
+
+  // Handle other unexpected errors
   if (!response.ok) {
     throw new Error(
       "Unable to prepare your CV download. Please try again."
@@ -43,14 +68,23 @@ export async function downloadCV(
     )}`
   );
 
+  if (downloadResponse.status === 403) {
+    throw new Error(
+      "Your download link has expired or has already been used."
+    );
+  }
+
   if (!downloadResponse.ok) {
-    throw new Error("Unable to download the CV.");
+    throw new Error(
+      "Unable to download the CV. Please try again."
+    );
   }
 
   const blob = await downloadResponse.blob();
   const url = URL.createObjectURL(blob);
 
   const link = document.createElement("a");
+
   link.href = url;
   link.download = "Ilham_Feysel_CV.pdf";
 
@@ -60,3 +94,4 @@ export async function downloadCV(
 
   URL.revokeObjectURL(url);
 }
+

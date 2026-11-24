@@ -194,4 +194,15 @@
       transition: none;
     }
   }
+
+  .cv-modal-error {
+    color: #b42318;
+    background-color: #fff1f0;
+    border: 1px solid #fecdca;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+  }
   
